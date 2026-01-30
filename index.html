@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison de Bonheur – Chocolaterie Artisanale</title>
+
+<!-- Meta tags ajoutés -->
+<meta name="author" content="Doha Faih">
+<meta name="student-ep" content="24002939">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: url('https://pin.it/3llKImcvW') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  padding-top: 100px; /* space for fixed header */
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  padding: 15px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 40px;
+  color: #E63946;
+  text-shadow: 1px 1px 6px #000;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 30px;
+}
+
+.hero-box {
+  background: rgba(59,44,37,0.9);
+  border-radius: 20px;
+  padding: 25px 35px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+  max-width: 500px;
+}
+
+.hero-box h2 {
+  color: #FBEFE6;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.hero-box p {
+  color: #FFE5C2;
+  font-size: 17px;
+}
+
+/* PRODUCTS */
+.products {
+  padding: 60px 50px;
+  background: rgba(0,0,0,0.7);
+}
+
+.products h2 {
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #fff0e5;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+}
+
+.card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+/* Noms chocolat et prix */
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #A0522D; /* marron clair */
+  text-shadow: 1px 1px 3px #000; /* pour mieux apparaître sur fond sombre */
+}
+
+.card p {
+  font-weight: bold;
+  color: #D2B48C; /* beige clair */
+  margin-bottom: 15px;
+}
+
+/* Quantity */
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.quantity button {
+  background: #8B4513;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.quantity button:hover {
+  background: #D2691E;
+}
+
+.quantity span {
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+/* Add to cart button */
+.card button {
+  background: linear-gradient(135deg, #8B4513, #D2691E);
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #D2691E, #8B4513);
+}
+
+/* CART */
+.cart {
+  background: #f3e0d2;
+  padding: 40px;
+  margin: 50px;
+  border-radius: 20px;
+  color: #3b2c25;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.cart h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+}
+
+.cart li {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.cart li button {
+  background: #D2691E;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart li button:hover {
+  background: #8B4513;
+}
+
+#total {
+  text-align: right;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.cart button.send {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #8B4513, #D2691E);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart button.send:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #D2691E, #8B4513);
+}
+
+/* CONTACT */
+.contact {
+  background: rgba(0,0,0,0.7);
+  padding: 50px;
+  text-align: center;
+  border-radius: 15px;
+  margin: 50px;
+}
+
+.contact h2 {
+  color: #FFD700;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.contact a {
+  color: #FFD700;
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: rgba(0,0,0,0.7);
+  font-size: 18px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .grid{
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  }
+  .cart, .contact{
+    margin:20px;
+    padding:20px;
+  }
+  .hero-box{
+    max-width:90%;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🍫 Maison de Bonheur</h1>
+</header>
+
+<section class="hero">
+  <div class="hero-box">
+    <h2>Collection de chocolats Maison de Bonheur</h2>
+    <p>Pour sublimer chacun de vos moments d’exception.</p>
+  </div>
+</section>
+
+<section class="products">
+  <h2>Nos créations chocolatées</h2>
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://pin.it/B6AE7A0Sr" alt="Chocolate Plate">
+      <div class="content">
+        <h3>Chocolate Plate</h3>
+        <p>250 DH</p>
+        <div class="quantity">
+          <button onclick="changeQuantity('Chocolate Plate', -1)">-</button>
+          <span id="qty-Chocolate Plate">1</span>
+          <button onclick="changeQuantity('Chocolate Plate', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Chocolate Plate',250)">Ajouter au panier</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pin.it/6aCMJ7OBn" alt="Cocoa Chocolate">
+      <div class="content">
+        <h3>Cocoa Chocolate</h3>
+        <p>150 DH</p>
+        <div class="quantity">
+          <button onclick="changeQuantity('Cocoa Chocolate', -1)">-</button>
+          <span id="qty-Cocoa Chocolate">1</span>
+          <button onclick="changeQuantity('Cocoa Chocolate', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Cocoa Chocolate',150)">Ajouter au panier</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pin.it/54x7Mf0pL" alt="Chocolate Sweets">
+      <div class="content">
+        <h3>Chocolate Sweets</h3>
+        <p>250 DH</p>
+        <div class="quantity">
+          <button onclick="changeQuantity('Chocolate Sweets', -1)">-</button>
+          <span id="qty-Chocolate Sweets">1</span>
+          <button onclick="changeQuantity('Chocolate Sweets', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Chocolate Sweets',250)">Ajouter au panier</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pin.it/3WxhFpRf3" alt="Chocolate Balls">
+      <div class="content">
+        <h3>Chocolate Balls</h3>
+        <p>200 DH</p>
+        <div class="quantity">
+          <button onclick="changeQuantity('Chocolate Balls', -1)">-</button>
+          <span id="qty-Chocolate Balls">1</span>
+          <button onclick="changeQuantity('Chocolate Balls', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Chocolate Balls',200)">Ajouter au panier</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pin.it/2Ik6kB6vx" alt="Coffee Chocolate">
+      <div class="content">
+        <h3>Coffee Chocolate</h3>
+        <p>500 DH</p>
+        <div class="quantity">
+          <button onclick="changeQuantity('Coffee Chocolate', -1)">-</button>
+          <span id="qty-Coffee Chocolate">1</span>
+          <button onclick="changeQuantity('Coffee Chocolate', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Coffee Chocolate',500)">Ajouter au panier</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pin.it/38p6JKXI6" alt="Caramel Chocolate">
+      <div class="content">
+        <h3>Caramel Chocolate</h3>
+        <p>300 DH</p>
+        <div class="quantity">
+          <button onclick="changeQuantity('Caramel Chocolate', -1)">-</button>
+          <span id="qty-Caramel Chocolate">1</span>
+          <button onclick="changeQuantity('Caramel Chocolate', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Caramel Chocolate',300)">Ajouter au panier</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://pin.it/1TogUtn22" alt="Noisette Choco">
+      <div class="content">
+        <h3>Noisette Choco</h3>
+        <p>159 DH</p>
+        <div class="quantity">
+          <button onclick="changeQuantity('Noisette Choco', -1)">-</button>
+          <span id="qty-Noisette Choco">1</span>
+          <button onclick="changeQuantity('Noisette Choco', 1)">+</button>
+        </div>
+        <button onclick="addToCart('Noisette Choco',159)">Ajouter au panier</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cart" id="cart">
+  <h2>🛒 Votre sélection</h2>
+  <ul id="cartList"></ul>
+  <h3 id="total">Total: 0 DH</h3>
+  <button class="send" onclick="sendOrder()">Valider la commande 📩</button>
+</section>
+
+<section class="contact" id="contact">
+  <h2>📩 Contact</h2>
+  <p>📞 Téléphone : 0720399701</p>
+  <p>✉ Email : <a href="mailto:dohafaih3@gmail.com">dohafaih3@gmail.com</a></p>
+</section>
+
+<footer>
+  © 2026 Maison de Bonheur — Chocolaterie artisanale
+</footer>
+
+<script>
+let cart = [];
+let total = 0;
+let quantities = {};
+
+function changeQuantity(name, delta){
+  if(!quantities[name]) quantities[name]=1;
+  quantities[name]+=delta;
+  if(quantities[name]<1) quantities[name]=1;
+  document.getElementById(`qty-${name}`).textContent = quantities[name];
+}
+
+function addToCart(name,price){
+  let qty = quantities[name] || 1;
+  for(let i=0;i<qty;i++){
+    cart.push({name,price});
+    total += price;
+  }
+  quantities[name]=1;
+  document.getElementById(`qty-${name}`).textContent=1;
+  updateCart();
+}
+
+function removeFromCart(index){
+  total-=cart[index].price;
+  cart.splice(index,1);
+  updateCart();
+}
+
+function updateCart(){
+  const list=document.getElementById("cartList");
+  list.innerHTML="";
+  cart.forEach((item,index)=>{
+    let li=document.createElement("li");
+    li.innerHTML=`${item.name} - ${item.price} DH <button onclick="removeFromCart(${index})">Retirer</button>`;
+    list.appendChild(li);
+  });
+  document.getElementById("total").textContent="Total: "+total+" DH";
+}
+
+function sendOrder(){
+  if(cart.length===0){
+    alert("Le panier est vide ❌");
+    return;
+  }
+  let message="🍫 Nouvelle commande - Maison de Bonheur\n\n";
+  cart.forEach(item=>{
+    message+="• "+item.name+" - "+item.price+" DH\n";
+  });
+  message+="\nTotal: "+total+" DH";
+  let phone="212720399701";
+  let url="https://wa.me/"+phone+"?text="+encodeURIComponent(message);
+  window.open(url,"_blank");
+}
+</script>
+
+</body>
+</html>
+
+ 
+
